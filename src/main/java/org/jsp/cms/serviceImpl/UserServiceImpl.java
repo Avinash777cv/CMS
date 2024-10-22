@@ -76,7 +76,7 @@ public class UserServiceImpl implements UserService{
 		
 		
 		
-		Optional<User> optional = userDao.findByUsernameAndPassword(authUser.getUserName(), authUser.getPassword());
+		Optional<User> optional = userDao.findByUsernameAndPassword(authUser.getUsername(), authUser.getPassword());
 		
 		if(optional.isEmpty())
 			throw InvalidCredentialsException.builder().message("Invalid Username or Password").build();

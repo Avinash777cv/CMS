@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,17 +21,15 @@ import lombok.Setter;
 public class Student {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	private String photo;
-	
-	private String yearOfStudy;
-	
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@MapsId
+	@OneToOne
 	private User user;
-	
+	private String photo;
+	private String yearOfStudy;
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Department department;
+	
+	
 	
 }

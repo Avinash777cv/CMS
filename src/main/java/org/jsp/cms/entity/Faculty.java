@@ -1,11 +1,14 @@
 package org.jsp.cms.entity;
 
+import java.time.LocalTime;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,7 +17,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -22,15 +24,17 @@ import lombok.Setter;
 public class Faculty {
 	
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private int id;
-	private String photo;
-	private String officeHours;
-	
-	
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@MapsId
+	@OneToOne
 	private User user;
+	private String photo;
+	private LocalTime officeHours;
 	
+//	
+//	@OneToOne(cascade = CascadeType.PERSIST)
+//	private User user;
+//	
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Department department;
